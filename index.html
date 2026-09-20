@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-50 text-slate-800">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDE Saint Genes - Lycée</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1b263b',
+                            900: '#0d1b2a',
+                            950: '#08101a',
+                        },
+                        steel: {
+                            500: '#415a77',
+                            600: '#33465c',
+                        },
+                        accent: {
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-transition {
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans bg-slate-50 text-slate-800 antialiased">
+
+    <!-- En-tête / Navigation Principale -->
+    <header class="sticky top-0 z-40 bg-navy-900 text-white shadow-lg border-b border-navy-800">
+        <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer group" onclick="navigateTo('accueil')">
+                <img src="logo.png" alt="Logo BDE" class="w-10 h-10 object-contain">
+                <div>
+                    <h1 class="text-lg font-serif font-bold tracking-wide text-slate-100 group-hover:text-blue-300 transition-colors">
+                        Bureau des Élèves
+                    </h1>
+                    <p class="text-xs text-slate-400 font-light">Lycée Saint-Genes LaSalle • 2026-2027</p>
+                </div>
+            </div>
+
+            <!-- Menu de navigation Desktop (Boutique retirée) -->
+            <nav class="hidden md:flex items-center space-x-1">
+                <button onclick="navigateTo('accueil')" id="nav-accueil" class="nav-btn px-4 py-2 text-sm font-medium rounded transition-all duration-200 text-slate-200 hover:text-white hover:bg-white/10 flex items-center gap-2">
+                    <i class="fa-solid fa-house text-xs opacity-70"></i> Accueil
+                </button>
+                <button onclick="navigateTo('equipe')" id="nav-equipe" class="nav-btn px-4 py-2 text-sm font-medium rounded transition-all duration-200 text-slate-200 hover:text-white hover:bg-white/10 flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap text-xs opacity-70"></i> L'Équipe
+                </button>
+                <button onclick="navigateTo('agenda')" id="nav-agenda" class="nav-btn px-4 py-2 text-sm font-medium rounded transition-all duration-200 text-slate-200 hover:text-white hover:bg-white/10 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days text-xs opacity-70"></i> Agenda
+                </button>
+            </nav>
+
+        </div>
+
+        <!-- Navigation Mobile (Boutique retirée) -->
+        <div class="md:hidden flex justify-around border-t border-navy-800 bg-navy-950 py-2 text-xs text-slate-300">
+            <button onclick="navigateTo('accueil')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-house"></i>Accueil</button>
+            <button onclick="navigateTo('equipe')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-sitemap"></i>Équipe</button>
+            <button onclick="navigateTo('agenda')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-calendar-days"></i>Agenda</button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto p-6 md:p-8">
+
+        <!-- ==================== PAGE 1: ACCUEIL ==================== -->
+        <section id="page-accueil" class="page-content space-y-8 page-transition">
+            
+            <div class="relative rounded-lg overflow-hidden shadow-md bg-navy-900 text-white border border-slate-200/20">
+                <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop');"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-transparent z-0"></div>
+
+                <div class="relative z-10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="max-w-xl space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-blue-500/20 text-blue-200 border border-blue-400/30 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full backdrop-blur-sm">
+                            <i class="fa-solid fa-bullhorn text-blue-400"></i> Communication
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-white leading-tight">
+                            Engagés pour la vie lycéenne.
+                        </h2>
+                        <p class="text-slate-300 text-sm md:text-base font-light leading-relaxed">
+                            Bienvenue à tous sur le projet du BDE. Vous trouverez de quoi faire par ici. 
+                        </p>
+                        
+                        <div class="pt-4 flex flex-wrap gap-3">
+                            <button onclick="navigateTo('agenda')" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded text-sm font-semibold shadow-md transition-all flex items-center gap-2">
+                                Consulter l'Agenda <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                            <button onclick="navigateTo('equipe')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-2.5 rounded text-sm font-semibold transition-all backdrop-blur-sm flex items-center gap-2">
+                                Voir l'Equipe
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Logo placé tout à droite -->
+                    <div class="hidden sm:flex items-center justify-center shrink-0">
+                        <img src="logo.png" alt="Logo BDE" class="w-32 h-32 md:w-44 md:h-44 object-contain drop-shadow-lg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid : Compte à rebours + Communiqués -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Bloc Compte à Rebours Événement -->
+                <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                            <h3 class="font-serif font-bold text-navy-900 text-base flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-blue-600"></i> Prochain Événement
+                            </h3>
+                            <span id="countdown-badge" class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-100">J-0</span>
+                        </div>
+                        <div class="text-center py-4">
+                            <p id="countdown-title" class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Aucun événement à venir</p>
+                            
+                            <!-- Compte à rebours dynamique en secondes -->
+                            <div class="flex justify-center items-center space-x-1.5 my-3 text-navy-900 font-serif text-xl font-bold">
+                                <div class="bg-slate-50 border border-slate-200 rounded px-2.5 py-1">
+                                    <span id="timer-days" class="block">00</span>
+                                    <span class="block font-sans text-[9px] text-slate-500 font-normal uppercase">Jours</span>
+                                </div>
+                                <span class="text-slate-300">:</span>
+                                <div class="bg-slate-50 border border-slate-200 rounded px-2.5 py-1">
+                                    <span id="timer-hours" class="block">00</span>
+                                    <span class="block font-sans text-[9px] text-slate-500 font-normal uppercase">Heures</span>
+                                </div>
+                                <span class="text-slate-300">:</span>
+                                <div class="bg-slate-50 border border-slate-200 rounded px-2.5 py-1">
+                                    <span id="timer-minutes" class="block">00</span>
+                                    <span class="block font-sans text-[9px] text-slate-500 font-normal uppercase">Min</span>
+                                </div>
+                                <span class="text-slate-300">:</span>
+                                <div class="bg-slate-50 border border-slate-200 rounded px-2.5 py-1">
+                                    <span id="timer-seconds" class="block text-blue-600">00</span>
+                                    <span class="block font-sans text-[9px] text-slate-500 font-normal uppercase">Sec</span>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-slate-500 flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-location-dot text-slate-400"></i> <span id="countdown-location">Lycée</span>
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="navigateTo('agenda')" class="w-full bg-slate-900 hover:bg-slate-800 text-white rounded py-2.5 text-xs uppercase font-semibold tracking-wider transition-colors">
+                        Consulter les détails
+                    </button>
+                </div>
+
+                <!-- Bloc Communications sans mention de boutique -->
+                <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-4 md:col-span-2">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                        <h3 class="font-serif font-bold text-navy-900 text-base flex items-center gap-2">
+                            <i class="fa-regular fa-newspaper text-blue-600"></i> Communiqués & Annonces
+                        </h3>
+                        <span class="text-xs text-slate-400">Actualités</span>
+                    </div>
+
+                    <div class="space-y-3 divide-y divide-slate-100">
+                        <div class="pt-2 flex items-start gap-4">
+                            <span class="bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-1 rounded text-xs font-semibold whitespace-nowrap">20 SEP</span>
+                            <div class="space-y-0.5">
+                                <h4 class="font-semibold text-slate-900 text-sm">Ouverture du Site</h4>
+                                <p class="text-xs text-slate-500">Ouverture officiel du site du BDE.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galerie Photo -->
+            <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-3">
+                    <div>
+                        <h3 class="font-serif font-bold text-navy-900 text-lg flex items-center gap-2">
+                            <i class="fa-regular fa-images text-blue-600"></i> Album Souvenir
+                        </h3>
+                        <p class="text-xs text-slate-500">Retour en images sur les temps forts de l'année</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+                        <img src="event1.jpg" alt="150's" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
+                            <span class="text-xs font-semibold">150's Saint Genes</span>
+                            <span class="text-[10px] text-slate-300">2024-2025</span>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+                        <img src="event2.jpg" alt="Terminal 2025" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
+                            <span class="text-xs font-semibold">Terminal 2025</span>
+                            <span class="text-[10px] text-slate-300">2025-2026</span>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+                        <img src="event3.jpg" alt="intégration" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
+                            <span class="text-xs font-semibold">Intégration 2nd</span>
+                            <span class="text-[10px] text-slate-300">2025-2026</span>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+                        <img src="event4.jpg" alt="rose" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
+                            <span class="text-xs font-semibold">Octobre Rose</span>
+                            <span class="text-[10px] text-slate-300">2025-2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE 2: L'ÉQUIPE (ORGANIGRAMME HIÉRARCHIQUE) ==================== -->
+        <section id="page-equipe" class="page-content space-y-10 hidden page-transition">
+            <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-3">
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-navy-900">L'Equipe du BDE</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Structure du BDE.</p>
+                </div>
+            </div>
+
+            <!-- NIVEAU HIÉRARCHIQUE 1 : Présidence (2 Dirigeants tout en haut) -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="h-px bg-slate-300 w-12"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-blue-900 bg-blue-100/70 border border-blue-200 px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-crown text-amber-500 mr-1"></i> Direction
+                    </span>
+                    <span class="h-px bg-slate-300 w-12"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- Leader 1: Président -->
+                    <div class="bg-white rounded-lg border-2 border-blue-600/40 shadow-md overflow-hidden hover:shadow-lg transition group relative">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span class="bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">Présidente</span>
+                        </div>
+                        <div class="h-64 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Judith" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                        </div>
+                        <div class="p-6 space-y-3 bg-gradient-to-b from-blue-50/30 to-white">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-serif font-bold text-navy-900 text-xl">? Judith</h3>
+                                    <p class="text-xs text-blue-700 font-semibold uppercase tracking-wider mt-0.5">Présidente du BDE</p>
+                                </div>
+                                <span class="bg-navy-900 text-white text-[10px] px-2 py-0.5 rounded font-medium">Terminale Gén.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leader 2: Referent -->
+                    <div class="bg-white rounded-lg border-2 border-blue-600/40 shadow-md overflow-hidden hover:shadow-lg transition group relative">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span class="bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">Référent</span>
+                        </div>
+                        <div class="h-64 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Florentin P." class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                        </div>
+                        <div class="p-6 space-y-3 bg-gradient-to-b from-blue-50/30 to-white">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-serif font-bold text-navy-900 text-xl">PETIT Florentin</h3>
+                                    <p class="text-xs text-blue-700 font-semibold uppercase tracking-wider mt-0.5">Référent Pro.</p>
+                                </div>
+                                <span class="bg-navy-900 text-white text-[10px] px-2 py-0.5 rounded font-medium">Terminale Pro.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connecteur Visuel entre les niveaux -->
+            <div class="flex flex-col items-center justify-center my-2">
+                <div class="w-0.5 h-8 bg-slate-300"></div>
+                <div class="w-12 h-0.5 bg-slate-300"></div>
+            </div>
+
+            <!-- NIVEAU HIÉRARCHIQUE 2 : Les Membres -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="h-px bg-slate-300 w-12"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-600 bg-slate-200/70 border border-slate-300 px-3 py-1 rounded-full">
+                        Membre
+                    </span>
+                    <span class="h-px bg-slate-300 w-12"></span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                    <!-- Membre 3 : Trésorerie -->
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Prénom ?." class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-2 right-2 bg-navy-900/80 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[10px] font-medium">2nd Gén.</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">NOM Prénom</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membres</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE 3: AGENDA ==================== -->
+        <section id="page-agenda" class="page-content space-y-8 hidden page-transition">
+            <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-navy-900">Agenda des Événements</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Calendrier des activités proposé par le BDE.</p>
+                </div>
+                
+                <!-- Filtres rapides -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterEvents('all', this)" class="agenda-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition">Tous</button>
+                    <button onclick="filterEvents('soiree', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Galas & Soirées</button>
+                    <button onclick="filterEvents('autre', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Autre</button>
+                </div>
+            </div>
+
+            <!-- Liste des Événements -->
+            <div class="space-y-4" id="events-list">
+
+                <!-- Événement 1 : utilise le format YYYY-MM-DD pour la date -->
+                <div class="bg-white rounded-lg p-5 border border-slate-200 shadow-sm hover:border-slate-300 transition flex flex-col md:flex-row gap-5 items-start md:items-center event-item" 
+                    data-category="autre" 
+                    data-date="2026-09-30" 
+                    data-title="Event Test" 
+                    data-location="Foyer">
+                    
+                    <div class="bg-blue-50 border border-blue-200 rounded p-3 text-center min-w-[110px] w-full md:w-auto">
+                        <span class="block text-2xl font-serif font-bold text-blue-900">30 SEP</span>
+                        <span class="block text-[11px] uppercase font-semibold text-blue-700">Mercredi</span>
+                    </div>
+                    
+                    <div class="flex-grow space-y-1.5">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-slate-100 text-slate-700 border border-slate-200 text-[10px] uppercase font-bold px-2 py-0.5 rounded">Autre</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>12h05 - 12h45</span>
+                        </div>
+                        <h3 class="text-lg font-serif font-bold text-navy-900">Event Test</h3>
+                        <p class="text-xs text-slate-600">Ceci est un test pour l'événement.</p>
+                    </div>
+                    
+                    <div class="min-w-[150px] w-full md:w-auto">
+                        <button onclick="showEventDetails('Event Test', '30 Septembre 2026 • 12h05', 'Foyer', 'RAS.')" class="w-full bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-xs font-medium transition text-center">
+                            Détails & Infos
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal de Détail d'événement -->
+    <div id="event-modal" class="fixed inset-0 z-50 bg-navy-950/70 backdrop-blur-sm flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 space-y-5 relative border border-slate-200">
+            <button onclick="closeEventModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="border-b border-slate-100 pb-3">
+                <span class="inline-block bg-blue-50 text-blue-700 border border-blue-100 px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider mb-2">Fiche d'Événement</span>
+                <h3 id="modal-event-title" class="text-xl font-serif font-bold text-navy-900">Titre Événement</h3>
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-600">
+                <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-calendar text-blue-600 w-4 text-center"></i>
+                    <span id="modal-event-date" class="font-semibold text-slate-800">-</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot text-blue-600 w-4 text-center"></i>
+                    <span id="modal-event-location" class="font-semibold text-slate-800">-</span>
+                </div>
+                <div class="border-t border-slate-100 pt-3 mt-2">
+                    <p class="font-semibold text-slate-800 mb-1">Informations complémentaires :</p>
+                    <p id="modal-event-desc" class="leading-relaxed text-slate-600">-</p>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-100 flex justify-end gap-2">
+                <button onclick="closeEventModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-xs font-medium shadow-sm transition">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-navy-900 text-white px-4 py-3 rounded-md shadow-lg border border-navy-800 flex items-center gap-3 text-xs">
+        <i class="fa-solid fa-circle-info text-blue-400 text-base"></i>
+        <span id="toast-message">Notification</span>
+    </div>
+
+
+    <!-- Footer / Pied de Page Institutionnel sans référence boutique -->
+    <footer class="bg-navy-900 text-slate-300 border-t border-navy-800 mt-16 py-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs">
+            <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                    <img src="logo.png" alt="Logo BDE" class="w-10 h-10 object-contain">
+                    <span class="font-serif font-bold text-sm text-white">Bureau des Élèves</span>
+                </div>
+                <p class="text-slate-400 leading-relaxed font-light">
+                    Site WEB pour le BDE.
+                </p>
+            </div>
+
+            <div class="space-y-2">
+                <p class="font-semibold text-white uppercase tracking-wider text-[11px]">Navigation</p>
+                <ul class="space-y-1.5 text-slate-400">
+                    <li><a href="#" onclick="navigateTo('accueil')" class="hover:text-white transition">Accueil & Communiqués</a></li>
+                    <li><a href="#" onclick="navigateTo('equipe')" class="hover:text-white transition">L'Equipe</a></li>
+                    <li><a href="#" onclick="navigateTo('agenda')" class="hover:text-white transition">Calendrier des événements</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <p class="font-semibold text-white uppercase tracking-wider text-[11px]">Réseaux Sociaux</p>
+                <div class="flex items-center space-x-3">
+                    <a href="https://www.instagram.com/bde_stgenes/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded bg-navy-800 hover:bg-blue-600 flex items-center justify-center text-white transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+                </div>
+                <p class="text-slate-500 text-[11px]">© 2026-2027 BDE Lycée • Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation fluide (Single Page Application)
+        function navigateTo(pageId) {
+            // Masquer toutes les pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.add('hidden'));
+
+            // Réinitialiser le style des boutons de navigation desktop
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('bg-white/15', 'text-white', 'font-semibold');
+                btn.classList.add('text-slate-200');
+            });
+
+            // Afficher la page cible
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Activer le bouton de navigation correspondant
+            const activeBtn = document.getElementById(`nav-${pageId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white/15', 'text-white', 'font-semibold');
+            }
+
+            // Remonter au sommet de la page avec animation douce
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Filtrage des événements dans l'Agenda
+        function filterEvents(category, btnElement) {
+            const filterBtns = document.querySelectorAll('.agenda-filter-btn');
+            filterBtns.forEach(btn => {
+                btn.className = "agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition";
+            });
+
+            btnElement.className = "agenda-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition";
+
+            const items = document.querySelectorAll('.event-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal de Connexion Membre BDE
+        function openLoginModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            closeLoginModal();
+            showNotification("Connexion réussie à l'Espace Administration BDE.");
+        }
+
+        // Modal de Détails d'événement
+        function showEventDetails(title, date, location, desc) {
+            document.getElementById('modal-event-title').innerText = title;
+            document.getElementById('modal-event-date').innerText = date;
+            document.getElementById('modal-event-location').innerText = location;
+            document.getElementById('modal-event-desc').innerText = desc;
+            document.getElementById('event-modal').classList.remove('hidden');
+        }
+
+        function closeEventModal() {
+            document.getElementById('event-modal').classList.add('hidden');
+        }
+
+        // Système de notification Toast
+        function showNotification(message) {
+            const toast = document.getElementById('toast-notification');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Initialisation au chargement
+        window.onload = function() {
+            navigateTo('accueil');
+        };
+
+        let countdownInterval = null;
+
+        function startDynamicCountdown() {
+            const events = document.querySelectorAll('.event-item');
+            const now = new Date();
+
+            let nextEventDate = null;
+            let closestEvent = null;
+            let minDiff = Infinity;
+
+            // 1. Trouver l'événement à venir le plus proche
+            events.forEach(event => {
+                const dateStr = event.getAttribute('data-date'); // ex: "2026-09-30"
+                if (!dateStr) return;
+
+                // On fixe l'objectif au matin même du jour J à 00:00:00
+                const eventMorning = new Date(`${dateStr}T00:00:00`);
+
+                const diff = eventMorning - now;
+
+                // Si l'événement est aujourd'hui ou dans le futur
+                if (diff + (24 * 60 * 60 * 1000) > 0 && diff < minDiff) {
+                    minDiff = diff;
+                    nextEventDate = eventMorning;
+                    closestEvent = {
+                        title: event.getAttribute('data-title'),
+                        location: event.getAttribute('data-location')
+                    };
+                }
+            });
+
+            // 2. Mettre à jour les textes fixes du widget
+            if (!closestEvent) {
+                document.getElementById('countdown-title').innerText = "Aucun événement à venir";
+                document.getElementById('countdown-location').innerText = "-";
+                document.getElementById('countdown-badge').innerText = "J-0";
+                return;
+            }
+
+            document.getElementById('countdown-title').innerText = closestEvent.title;
+            document.getElementById('countdown-location').innerText = closestEvent.location;
+
+            // Arrêter un ancien intervalle s'il existait
+            if (countdownInterval) clearInterval(countdownInterval);
+
+            // 3. Fonction d'actualisation chaque seconde
+            function updateTimer() {
+                const currentTime = new Date();
+                const distance = nextEventDate - currentTime;
+
+                if (distance <= 0) {
+                    // Le jour J est arrivé !
+                    document.getElementById('timer-days').innerText = "00";
+                    document.getElementById('timer-hours').innerText = "00";
+                    document.getElementById('timer-minutes').innerText = "00";
+                    document.getElementById('timer-seconds').innerText = "00";
+                    document.getElementById('countdown-badge').innerText = "Aujourd'hui !";
+                    return;
+                }
+
+                // Calculs du temps restant jusqu'à 00h00 le jour de l'event
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Affichage avec zéro initial (ex: 05 au lieu de 5)
+                document.getElementById('timer-days').innerText = String(days).padStart(2, '0');
+                document.getElementById('timer-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('timer-minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('timer-seconds').innerText = String(seconds).padStart(2, '0');
+                document.getElementById('countdown-badge').innerText = `J-${days}`;
+            }
+
+            // Lancer immédiatement puis toutes les secondes
+            updateTimer();
+            countdownInterval = setInterval(updateTimer, 1000);
+        }
+
+        // Démarrer au chargement de la page
+        window.addEventListener('DOMContentLoaded', startDynamicCountdown);
+    </script>
+</body>
+</html>
