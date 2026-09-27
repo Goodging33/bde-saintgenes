@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <!-- Menu de navigation Desktop (Boutique retirée) -->
+            <!-- Menu de navigation Desktop -->
             <nav class="hidden md:flex items-center space-x-1">
                 <button onclick="navigateTo('accueil')" id="nav-accueil" class="nav-btn px-4 py-2 text-sm font-medium rounded transition-all duration-200 text-slate-200 hover:text-white hover:bg-white/10 flex items-center gap-2">
                     <i class="fa-solid fa-house text-xs opacity-70"></i> Accueil
@@ -70,15 +70,19 @@
                 <button onclick="navigateTo('agenda')" id="nav-agenda" class="nav-btn px-4 py-2 text-sm font-medium rounded transition-all duration-200 text-slate-200 hover:text-white hover:bg-white/10 flex items-center gap-2">
                     <i class="fa-solid fa-calendar-days text-xs opacity-70"></i> Agenda
                 </button>
+                <button onclick="navigateTo('faq')" id="nav-faq" class="nav-btn px-4 py-2 text-sm font-medium rounded transition-all duration-200 text-slate-200 hover:text-white hover:bg-white/10 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-question text-xs opacity-70"></i> FAQ
+                </button>
             </nav>
 
         </div>
 
-        <!-- Navigation Mobile (Boutique retirée) -->
+        <!-- Navigation Mobile -->
         <div class="md:hidden flex justify-around border-t border-navy-800 bg-navy-950 py-2 text-xs text-slate-300">
             <button onclick="navigateTo('accueil')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-house"></i>Accueil</button>
             <button onclick="navigateTo('equipe')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-sitemap"></i>Équipe</button>
             <button onclick="navigateTo('agenda')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-calendar-days"></i>Agenda</button>
+            <button onclick="navigateTo('faq')" class="flex flex-col items-center gap-1 p-1"><i class="fa-solid fa-circle-question"></i>FAQ</button>
         </div>
     </header>
 
@@ -189,40 +193,43 @@
                 </div>
             </div>
 
-            <!-- Galerie Photo -->
+            <!-- Galerie Photo (Album Souvenir) avec clics interactifs -->
             <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-4">
                 <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-3">
                     <div>
                         <h3 class="font-serif font-bold text-navy-900 text-lg flex items-center gap-2">
                             <i class="fa-regular fa-images text-blue-600"></i> Album Souvenir
                         </h3>
-                        <p class="text-xs text-slate-500">Retour en images sur les temps forts de l'année</p>
+                        <p class="text-xs text-slate-500">Retour en images sur les temps forts (cliquez sur une photo pour l'agrandir)</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+                    <div onclick="openLightbox('event1.jpg', '150\'s Saint Genes', '2024-2025')" class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100 cursor-pointer">
                         <img src="event1.jpg" alt="150's" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
                             <span class="text-xs font-semibold">150's Saint Genes</span>
                             <span class="text-[10px] text-slate-300">2024-2025</span>
                         </div>
                     </div>
-                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+
+                    <div onclick="openLightbox('event2.jpg', 'Terminal 2025', '2025-2026')" class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100 cursor-pointer">
                         <img src="event2.jpg" alt="Terminal 2025" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
                             <span class="text-xs font-semibold">Terminal 2025</span>
                             <span class="text-[10px] text-slate-300">2025-2026</span>
                         </div>
                     </div>
-                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+
+                    <div onclick="openLightbox('event3.jpg', 'Intégration 2nd', '2025-2026')" class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100 cursor-pointer">
                         <img src="event3.jpg" alt="intégration" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
                             <span class="text-xs font-semibold">Intégration 2nd</span>
                             <span class="text-[10px] text-slate-300">2025-2026</span>
                         </div>
                     </div>
-                    <div class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100">
+
+                    <div onclick="openLightbox('event4.jpg', 'Octobre Rose', '2025-2026')" class="group relative rounded-md overflow-hidden border border-slate-200 aspect-video md:aspect-square bg-slate-100 cursor-pointer">
                         <img src="event4.jpg" alt="rose" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-200 p-3 flex flex-col justify-end text-white">
                             <span class="text-xs font-semibold">Octobre Rose</span>
@@ -236,14 +243,21 @@
 
         <!-- ==================== PAGE 2: L'ÉQUIPE (ORGANIGRAMME HIÉRARCHIQUE) ==================== -->
         <section id="page-equipe" class="page-content space-y-10 hidden page-transition">
-            <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-3">
+            <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row justify-between md:items-end gap-4">
                 <div>
-                    <h2 class="text-2xl font-serif font-bold text-navy-900">L'Equipe du BDE</h2>
-                    <p class="text-xs sm:text-sm text-slate-500">Structure du BDE.</p>
+                    <h2 class="text-2xl font-serif font-bold text-navy-900">L'Équipe du BDE</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Structure et membres du Bureau des Élèves.</p>
+                </div>
+                
+                <!-- Boutons de filtrage par filière -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterTeam('all', this)" class="team-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition">Tous</button>
+                    <button onclick="filterTeam('general', this)" class="team-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Général</button>
+                    <button onclick="filterTeam('pro', this)" class="team-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Pro</button>
                 </div>
             </div>
 
-            <!-- NIVEAU HIÉRARCHIQUE 1 : Présidence (2 Dirigeants tout en haut) -->
+            <!-- NIVEAU HIÉRARCHIQUE 1 : Direction -->
             <div class="space-y-4">
                 <div class="flex items-center justify-center gap-3">
                     <span class="h-px bg-slate-300 w-12"></span>
@@ -254,8 +268,8 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <!-- Leader 1: Président -->
-                    <div class="bg-white rounded-lg border-2 border-blue-600/40 shadow-md overflow-hidden hover:shadow-lg transition group relative">
+                    <!-- Leader 1: Présidente (Général -> Jaune) -->
+                    <div class="team-card bg-white rounded-lg border-2 border-blue-600/40 shadow-md overflow-hidden hover:shadow-lg transition group relative" data-filiere="general">
                         <div class="absolute top-3 left-3 z-10">
                             <span class="bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">Présidente</span>
                         </div>
@@ -265,16 +279,17 @@
                         <div class="p-6 space-y-3 bg-gradient-to-b from-blue-50/30 to-white">
                             <div class="flex justify-between items-start">
                                 <div>
-                                    <h3 class="font-serif font-bold text-navy-900 text-xl">? Judith</h3>
+                                    <h3 class="font-serif font-bold text-navy-900 text-xl">DOREILLAC Judith</h3>
                                     <p class="text-xs text-blue-700 font-semibold uppercase tracking-wider mt-0.5">Présidente du BDE</p>
                                 </div>
-                                <span class="bg-navy-900 text-white text-[10px] px-2 py-0.5 rounded font-medium">Terminale Gén.</span>
+                                <!-- Badge Jaune pour Général -->
+                                <span class="bg-amber-400 text-amber-950 font-bold border border-amber-500/30 text-[10px] px-2.5 py-1 rounded-full">Terminale Gén.</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Leader 2: Referent -->
-                    <div class="bg-white rounded-lg border-2 border-blue-600/40 shadow-md overflow-hidden hover:shadow-lg transition group relative">
+                    <!-- Leader 2: Référent (Pro -> Rose) -->
+                    <div class="team-card bg-white rounded-lg border-2 border-blue-600/40 shadow-md overflow-hidden hover:shadow-lg transition group relative" data-filiere="pro">
                         <div class="absolute top-3 left-3 z-10">
                             <span class="bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm">Référent</span>
                         </div>
@@ -287,7 +302,8 @@
                                     <h3 class="font-serif font-bold text-navy-900 text-xl">PETIT Florentin</h3>
                                     <p class="text-xs text-blue-700 font-semibold uppercase tracking-wider mt-0.5">Référent Pro.</p>
                                 </div>
-                                <span class="bg-navy-900 text-white text-[10px] px-2 py-0.5 rounded font-medium">Terminale Pro.</span>
+                                <!-- Badge Rose pour Pro -->
+                                <span class="bg-pink-500 text-white font-bold border border-pink-600/30 text-[10px] px-2.5 py-1 rounded-full">Terminale Pro.</span>
                             </div>
                         </div>
                     </div>
@@ -305,27 +321,99 @@
                 <div class="flex items-center justify-center gap-3">
                     <span class="h-px bg-slate-300 w-12"></span>
                     <span class="text-xs font-bold uppercase tracking-widest text-slate-600 bg-slate-200/70 border border-slate-300 px-3 py-1 rounded-full">
-                        Membre
+                        Membres
                     </span>
                     <span class="h-px bg-slate-300 w-12"></span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-                    <!-- Membre 3 : Trésorerie -->
-                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group">
+                    <div class="team-card bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group" data-filiere="pro">
                         <div class="h-48 bg-slate-100 relative overflow-hidden">
-                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Prénom ?." class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
-                            <span class="absolute top-2 right-2 bg-navy-900/80 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[10px] font-medium">2nd Gén.</span>
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Membre Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <!-- Badge Rose pour Pro -->
+                            <span class="absolute top-2 right-2 bg-pink-500 text-white font-bold border border-pink-600/30 px-2 py-0.5 rounded text-[10px]">Term. Pro.</span>
                         </div>
                         <div class="p-4 space-y-2">
                             <div>
-                                <h4 class="font-serif font-bold text-slate-900 text-base">NOM Prénom</h4>
-                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membres</p>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">FREVILLE Joachim</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membre</p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="team-card bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group" data-filiere="pro">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Membre Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <!-- Badge Rose pour Pro -->
+                            <span class="absolute top-2 right-2 bg-pink-500 text-white font-bold border border-pink-600/30 px-2 py-0.5 rounded text-[10px]">Term. Pro.</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">VICENTE Tom</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-card bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group" data-filiere="pro">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Membre Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <!-- Badge Rose pour Pro -->
+                            <span class="absolute top-2 right-2 bg-pink-500 text-white font-bold border border-pink-600/30 px-2 py-0.5 rounded text-[10px]">1er Pro.</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">BERNEDE Yvane</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-card bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group" data-filiere="pro">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Membre Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <!-- Badge Rose pour Pro -->
+                            <span class="absolute top-2 right-2 bg-pink-500 text-white font-bold border border-pink-600/30 px-2 py-0.5 rounded text-[10px]">2nd Pro.</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">FRITSCH Louise</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-card bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group" data-filiere="pro">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Membre Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <!-- Badge Rose pour Pro -->
+                            <span class="absolute top-2 right-2 bg-pink-500 text-white font-bold border border-pink-600/30 px-2 py-0.5 rounded text-[10px]">2nd Pro.</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">ARNAUD Lino</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membre</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-card bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition group" data-filiere="pro">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                            <img src="https://st3.depositphotos.com/3581215/18899/v/450/depositphotos_188994514-stock-illustration-vector-illustration-male-silhouette-profile.jpg" alt="Membre Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+                            <!-- Badge Rose pour Pro -->
+                            <span class="absolute top-2 right-2 bg-pink-500 text-white font-bold border border-pink-600/30 px-2 py-0.5 rounded text-[10px]">2nd Pro.</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <div>
+                                <h4 class="font-serif font-bold text-slate-900 text-base">AKINAGA Erwan</h4>
+                                <p class="text-[11px] text-blue-700 font-semibold uppercase tracking-wider">Membre</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                *l'ensemble des membres du général arriverons à la suite des <strong>élections</strong> des 2nd.
             </div>
         </section>
 
@@ -341,8 +429,8 @@
                 <!-- Filtres rapides -->
                 <div class="flex flex-wrap gap-2">
                     <button onclick="filterEvents('all', this)" class="agenda-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition">Tous</button>
-                    <button onclick="filterEvents('soiree', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Galas & Soirées</button>
-                    <button onclick="filterEvents('autre', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Autre</button>
+                    <button onclick="filterEvents('gén', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Gén.</button>
+                    <button onclick="filterEvents('pro', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Pro.</button>
                 </div>
             </div>
 
@@ -351,7 +439,7 @@
 
                 <!-- Événement 1 : utilise le format YYYY-MM-DD pour la date -->
                 <div class="bg-white rounded-lg p-5 border border-slate-200 shadow-sm hover:border-slate-300 transition flex flex-col md:flex-row gap-5 items-start md:items-center event-item" 
-                    data-category="autre" 
+                    data-category="gén" 
                     data-date="2026-09-30" 
                     data-title="Event Test" 
                     data-location="Foyer">
@@ -363,7 +451,7 @@
                     
                     <div class="flex-grow space-y-1.5">
                         <div class="flex items-center gap-2">
-                            <span class="bg-slate-100 text-slate-700 border border-slate-200 text-[10px] uppercase font-bold px-2 py-0.5 rounded">Autre</span>
+                            <span class="bg-slate-100 text-slate-700 border border-slate-200 text-[10px] uppercase font-bold px-2 py-0.5 rounded">Gén.</span>
                             <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>12h05 - 12h45</span>
                         </div>
                         <h3 class="text-lg font-serif font-bold text-navy-900">Event Test</h3>
@@ -380,7 +468,78 @@
             </div>
         </section>
 
+
+        <!-- ==================== PAGE 4: FAQ (FOIRE AUX QUESTIONS) ==================== -->
+        <section id="page-faq" class="page-content space-y-8 hidden page-transition">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-2xl font-serif font-bold text-navy-900">Foire Aux Questions (FAQ)</h2>
+                <p class="text-xs sm:text-sm text-slate-500">Retrouvez des réponses aux questions fréquentes sur le BDE.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Question 1 -->
+                <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-2">
+                    <h3 class="font-serif font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-blue-600 text-sm"></i>
+                        Qu'est-ce que le BDE ?
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                        Le Bureau des Élèves (BDE) est une association de lycéen pour organiser des événements aux lycées général et profesionnel.
+                    </p>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-2">
+                    <h3 class="font-serif font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-user-plus text-blue-600 text-sm"></i>
+                        Comment rejoindre l'équipe du BDE ?
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                        Les recrutements ont lieu en <strong class="text-slate-800">début d'année scolaire</strong>. Tu peux contacter Judith pour le Général, et Florentin pour le Profesionnel ou nous envoyer un message sur nos réseaux sociaux pour faire part de ta motivation!
+                    </p>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-2">
+                    <h3 class="font-serif font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-ticket text-blue-600 text-sm"></i>
+                        Comment participer aux événements ?
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                        Tous le monde peux participer a un événement, il vous suffit juste de vous renseigner sur les affiches/informations à votre disposition. 📌 
+                    </p>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm space-y-2">
+                    <h3 class="font-serif font-bold text-navy-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-blue-600 text-sm"></i>
+                        Puis-je proposer une idée d'événement ?
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed pt-1">
+                        Absolument! Le BDE est à l'écoute de toutes vos propostions. N'hésite pas à venir nous rencontrer au foyer ou à nous écrire sur Instagram.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
     </main>
+
+    <!-- Modal Lightbox Photo Grand Format -->
+    <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-navy-950/90 backdrop-blur-md flex flex-col items-center justify-center hidden p-4 transition-all">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        <div onclick="event.stopPropagation()" class="max-w-4xl max-h-[85vh] flex flex-col items-center space-y-3">
+            <img id="lightbox-img" src="" alt="Photo grand format" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border border-white/10">
+            <div class="text-center text-white">
+                <h4 id="lightbox-title" class="font-serif font-bold text-lg"></h4>
+                <p id="lightbox-date" class="text-xs text-slate-400"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Détail d'événement -->
     <div id="event-modal" class="fixed inset-0 z-50 bg-navy-950/70 backdrop-blur-sm flex items-center justify-center hidden p-4">
@@ -443,6 +602,7 @@
                     <li><a href="#" onclick="navigateTo('accueil')" class="hover:text-white transition">Accueil & Communiqués</a></li>
                     <li><a href="#" onclick="navigateTo('equipe')" class="hover:text-white transition">L'Equipe</a></li>
                     <li><a href="#" onclick="navigateTo('agenda')" class="hover:text-white transition">Calendrier des événements</a></li>
+                    <li><a href="#" onclick="navigateTo('faq')" class="hover:text-white transition">Foire Aux Questions (FAQ)</a></li>
                 </ul>
             </div>
 
@@ -485,6 +645,40 @@
 
             // Remonter au sommet de la page avec animation douce
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gestion de la Lightbox Photo (Agrandissement au clic)
+        function openLightbox(src, title, date) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-title').innerText = title;
+            document.getElementById('lightbox-date').innerText = date;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+        }
+
+        // Filtrage des membres de l'équipe (Tous, Général, Pro)
+        function filterTeam(filiere, btnElement) {
+            // Réinitialisation des styles des boutons
+            const filterBtns = document.querySelectorAll('.team-filter-btn');
+            filterBtns.forEach(btn => {
+                btn.className = "team-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition";
+            });
+
+            // Activer le bouton sélectionné
+            btnElement.className = "team-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition";
+
+            // Filtrer les cartes
+            const cards = document.querySelectorAll('.team-card');
+            cards.forEach(card => {
+                if (filiere === 'all' || card.getAttribute('data-filiere') === filiere) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
         // Filtrage des événements dans l'Agenda
