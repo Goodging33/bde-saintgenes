@@ -425,41 +425,49 @@
                     <h2 class="text-2xl font-serif font-bold text-navy-900">Agenda des Événements</h2>
                     <p class="text-xs sm:text-sm text-slate-500">Calendrier des activités proposé par le BDE.</p>
                 </div>
-                
-                <!-- Filtres rapides -->
+
+                <!-- Filtres rapides dans l'Agenda -->
                 <div class="flex flex-wrap gap-2">
                     <button onclick="filterEvents('all', this)" class="agenda-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition">Tous</button>
-                    <button onclick="filterEvents('gén', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Gén.</button>
-                    <button onclick="filterEvents('pro', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Pro.</button>
+                    <button onclick="filterEvents('mixte', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Pro & Général</button>
+                    <button onclick="filterEvents('general', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Général</button>
+                    <button onclick="filterEvents('pro', this)" class="agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition">Profesionnel</button>
                 </div>
             </div>
 
             <!-- Liste des Événements -->
             <div class="space-y-4" id="events-list">
 
-                <!-- Événement 1 : utilise le format YYYY-MM-DD pour la date -->
-                <div class="bg-white rounded-lg p-5 border border-slate-200 shadow-sm hover:border-slate-300 transition flex flex-col md:flex-row gap-5 items-start md:items-center event-item" 
-                    data-category="gén" 
+                <!-- Événement : une seule zone de saisie ! -->
+                <div class="event-item bg-white rounded-lg p-5 border border-slate-200 shadow-sm hover:border-slate-300 transition flex flex-col md:flex-row gap-5 items-start md:items-center"
+                    data-category="mixte" 
+                    data-title="Event Test"
                     data-date="2026-09-30" 
-                    data-title="Event Test" 
-                    data-location="Foyer">
+                    data-date-label="30 SEP"
+                    data-day="Mercredi"
+                    data-time="12h05 - 12h45"
+                    data-location="Foyer"
+                    data-desc="Ceci est un test pour l'événement. RAS.">
                     
+                    <!-- Bloc Date à gauche -->
                     <div class="bg-blue-50 border border-blue-200 rounded p-3 text-center min-w-[110px] w-full md:w-auto">
-                        <span class="block text-2xl font-serif font-bold text-blue-900">30 SEP</span>
-                        <span class="block text-[11px] uppercase font-semibold text-blue-700">Mercredi</span>
+                        <span class="event-date-label block text-2xl font-serif font-bold text-blue-900"></span>
+                        <span class="event-day block text-[11px] uppercase font-semibold text-blue-700"></span>
                     </div>
                     
+                    <!-- Détails au centre -->
                     <div class="flex-grow space-y-1.5">
                         <div class="flex items-center gap-2">
-                            <span class="bg-slate-100 text-slate-700 border border-slate-200 text-[10px] uppercase font-bold px-2 py-0.5 rounded">Gén.</span>
-                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>12h05 - 12h45</span>
+                            <span class="event-badge bg-amber-400 text-amber-950 font-bold border border-amber-500/30 text-[10px] px-2 py-0.5 rounded uppercase"></span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i><span class="event-time"></span></span>
                         </div>
-                        <h3 class="text-lg font-serif font-bold text-navy-900">Event Test</h3>
-                        <p class="text-xs text-slate-600">Ceci est un test pour l'événement.</p>
+                        <h3 class="event-title text-lg font-serif font-bold text-navy-900"></h3>
+                        <p class="event-desc text-xs text-slate-600 line-clamp-2"></p>
                     </div>
                     
+                    <!-- Bouton à droite -->
                     <div class="min-w-[150px] w-full md:w-auto">
-                        <button onclick="showEventDetails('Event Test', '30 Septembre 2026 • 12h05', 'Foyer', 'RAS.')" class="w-full bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-xs font-medium transition text-center">
+                        <button onclick="openEventFromCard(this)" class="w-full bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-xs font-medium transition text-center">
                             Détails & Infos
                         </button>
                     </div>
@@ -681,18 +689,22 @@
             });
         }
 
-        // Filtrage des événements dans l'Agenda
+        // Filtrage des événements dans l'Agenda (Tous, Général, Pro)
         function filterEvents(category, btnElement) {
+            // Réinitialisation du style des boutons de filtre
             const filterBtns = document.querySelectorAll('.agenda-filter-btn');
             filterBtns.forEach(btn => {
                 btn.className = "agenda-filter-btn border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-1.5 rounded text-xs font-semibold transition";
             });
 
+            // Activer le bouton cliqué
             btnElement.className = "agenda-filter-btn border border-navy-900 bg-navy-900 text-white px-3.5 py-1.5 rounded text-xs font-semibold transition";
 
+            // Filtrer les événements selon leur data-category
             const items = document.querySelectorAll('.event-item');
             items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
+                const itemCat = item.getAttribute('data-category');
+                if (category === 'all' || itemCat === category) {
                     item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
@@ -742,6 +754,52 @@
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3500);
         }
+
+        function renderEvents() {
+            document.querySelectorAll('.event-item').forEach(card => {
+                const title = card.getAttribute('data-title');
+                const dateLabel = card.getAttribute('data-date-label');
+                const day = card.getAttribute('data-day');
+                const time = card.getAttribute('data-time');
+                const desc = card.getAttribute('data-desc');
+                const category = card.getAttribute('data-category');
+
+                // Injection des textes
+                card.querySelector('.event-title').innerText = title;
+                card.querySelector('.event-date-label').innerText = dateLabel;
+                card.querySelector('.event-day').innerText = day;
+                card.querySelector('.event-time').innerText = time;
+                card.querySelector('.event-desc').innerText = desc;
+
+                // Badge conditionnel (Général, Pro, ou Mixte)
+                const badge = card.querySelector('.event-badge');
+                
+                if (category === 'pro') {
+                    badge.innerText = 'Pro';
+                    badge.className = 'event-badge bg-pink-500 text-white font-bold border border-pink-600/30 text-[10px] px-2 py-0.5 rounded uppercase';
+                } else if (category === 'mixte') {
+                    badge.innerText = 'Pro & Général';
+                    badge.className = 'event-badge bg-indigo-600 text-white font-bold border border-indigo-700/30 text-[10px] px-2 py-0.5 rounded uppercase';
+                } else {
+                    badge.innerText = 'Général';
+                    badge.className = 'event-badge bg-amber-400 text-amber-950 font-bold border border-amber-500/30 text-[10px] px-2 py-0.5 rounded uppercase';
+                }
+            });
+        }
+
+        // Fonction unique pour ouvrir la modale au clic
+        function openEventFromCard(btn) {
+            const card = btn.closest('.event-item');
+            const title = card.getAttribute('data-title');
+            const date = `${card.getAttribute('data-date-label')} • ${card.getAttribute('data-time')}`;
+            const location = card.getAttribute('data-location');
+            const desc = card.getAttribute('data-desc');
+
+            showEventDetails(title, date, location, desc);
+        }
+
+        // Lancement automatique au chargement
+        window.addEventListener('DOMContentLoaded', renderEvents);
 
         // Initialisation au chargement
         window.onload = function() {
